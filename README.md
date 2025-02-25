@@ -11,3 +11,5 @@ This AI-generated project does two things:
 Plan is to connect the two concepts into a frontend to type as well as display AoH's writing in an aesthetic manner
 
 TODO: Mobile compatibility, scrollbar doesn't work, no customization or formatting yet
+
+Favicon credit: <a href="https://www.flaticon.com/free-icons/jasmine" title="jasmine icons">Jasmine icons created by Freepik - Flaticon</a>
