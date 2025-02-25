@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jasmine Writer</title>
+    <link rel="icon" type="image/png" href="web/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="web/style.css">
+</head>
+<body>
+    <div class="container">
+        <textarea id="scrollingTextarea" spellcheck="false" rows="1" placeholder="Type here..."></textarea>
+    </div>
+
+    <script>
+        const textarea = document.getElementById('scrollingTextarea');
+
+        // Sync body scroll with textarea scroll
+        document.body.addEventListener('wheel', function(event) {
+            textarea.scrollTop += event.deltaY;
+        });
+
+        // Sync textarea scroll with body scroll
+        textarea.addEventListener('scroll', function() {
+            document.body.scrollTop = textarea.scrollTop;
+        });
+
+        // Insert 4 spaces when Tab is pressed
+        textarea.addEventListener('keydown', function(event) {
+            if (event.key === 'Tab') {
+                event.preventDefault();
+                const start = textarea.selectionStart;
+                const end = textarea.selectionEnd;
+
+                // Set textarea value to: text before caret + 4 spaces + text after caret
+                textarea.value = textarea.value.substring(0, start) + '	' + textarea.value.substring(end);
+
+                // Put caret at right position again
+                textarea.selectionStart = textarea.selectionEnd = start + 1;
+            }
+        });
+    </script>
+</body>
+</html>
